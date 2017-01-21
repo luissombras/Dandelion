@@ -30,7 +30,7 @@ public class WaveEffectController : MonoBehaviour {
         Vector2 radial = new Vector2(coliding_obj_pos.x - mouse_pos.x, coliding_obj_pos.y - mouse_pos.y);
         float magnitude = Vector3.Magnitude(radial);
 
-        Debug.Log(magnitude);
+        //Debug.Log(magnitude);
         //for direction
         radial.Normalize();
         //magnitude balance
