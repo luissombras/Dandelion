@@ -3,6 +3,8 @@ using System.Collections;
 
 public class WavesController : MonoBehaviour {
 
+    public GameObject wave_effect;
+
 	// Use this for initialization
 	void Start () {
 	
@@ -12,13 +14,11 @@ public class WavesController : MonoBehaviour {
 	void Update () {
         if (Input.GetMouseButtonDown(0))
         {
-            GameObject[] movables;
-            movables = GameObject.FindGameObjectsWithTag("wave_movable");
-
-            for(int i = 0; i < movables.Length; i++)
-            {
-                Debug.Log("Created Wave " + i + " " + movables[i].GetType());
-            }
+            float delay = 5; //seconds
+            Vector3 mouse_pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Debug.Log(mouse_pos.x + " " + mouse_pos.y);
+            GameObject wave = Instantiate(wave_effect, mouse_pos, Quaternion.identity) as GameObject;
+            Destroy(wave, delay);
         }
 	}
 }
