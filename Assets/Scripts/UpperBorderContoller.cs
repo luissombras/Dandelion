@@ -6,9 +6,14 @@ public class UpperBorderContoller : MonoBehaviour {
 
     private Vector3 upper_screen_pos;
 
+	// NOTIFIER
+	private Notifier notifier;
+
     // Use this for initialization
     void Start()
     {
+		// NOTIFIER
+		notifier = new Notifier();
         upper_screen_pos = transform.position;
     }
 
@@ -21,7 +26,8 @@ public class UpperBorderContoller : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D other) {
 		if (other.tag == "Player") {
 			Debug.Log ("Frog Died!!");
-			//Destroy (other.gameObject);
+			notifier.Notify (ScreensControl.ON_PLAYER_DEAD);
+			Destroy (other.gameObject);
 		}
 	}
 }
