@@ -26,7 +26,7 @@ public class UpperBorderContoller : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D other) {
 		if (other.tag == "Player") {
 			Debug.Log ("Frog Died!!");
-			notifier.Notify (ScreensControl.ON_PLAYER_DEAD);
+			notifier.Notify (ScreensController.ON_PLAYER_DEAD);
 			Destroy (other.gameObject);
 		}
 	}

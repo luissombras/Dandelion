@@ -12,9 +12,14 @@ public class SwirlController : MonoBehaviour {
     public float swirl_velocity;
     public float cntr_force;
     public float perp_force;
+
+	// NOTIFIER
+	private Notifier notifier;
+
     // Use this for initialization
     void Start () {
-		
+		// NOTIFIER
+		notifier = new Notifier();
 	}
 	
 	// Update is called once per frame
@@ -62,5 +67,13 @@ public class SwirlController : MonoBehaviour {
     void enterTheVoid()
     {
         Debug.Log("DEATH");
+		notifier.Notify (ScreensController.ON_PLAYER_DEAD);
     }
+
+	// NOTIFIER
+	void OnDestroy () {
+		if (notifier != null) {
+			notifier.UnsubcribeAll ();
+		}
+	}
 }
