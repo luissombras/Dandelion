@@ -4,15 +4,29 @@ using UnityEngine;
 
 public class BottomBorderContoller : MonoBehaviour {
 
-    private Vector3 bottom_screen_pos;
+    public float border_place;//1 - Left, 2 - Bottom, 3 Right
+
+    private Vector3 screen_pos;
 
     // Use this for initialization
     void Start () {
-        bottom_screen_pos = transform.position;
+        float cam_height = 2f * Camera.main.orthographicSize;
+        float cam_width = cam_height * Camera.main.aspect;
+        //adtapts if left and right camera limits are smaller than play space
+        if (border_place == 1 && cam_width / 2 <= Mathf.Abs(transform.position.x))
+        {
+            screen_pos = new Vector3(-cam_width/2, transform.position.y, transform.position.z);
+        } else if (border_place == 3 && cam_width / 2 <= transform.position.x)
+        {
+            screen_pos = new Vector3(cam_width/2, transform.position.y, transform.position.z);
+        } else
+        {
+            screen_pos = transform.position;
+        }
     }
 	
 	// Update is called once per frame
 	void Update () {
-        transform.position = Camera.main.transform.position + bottom_screen_pos;
+        transform.position = Camera.main.transform.position + screen_pos;
 	}
 }
