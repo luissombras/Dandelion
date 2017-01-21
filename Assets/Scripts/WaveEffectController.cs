@@ -23,7 +23,6 @@ public class WaveEffectController : MonoBehaviour {
                                 gameObject.GetComponent<SpriteRenderer>().color.g,
                                 gameObject.GetComponent<SpriteRenderer>().color.b,
                                 gameObject.GetComponent<SpriteRenderer>().color.a*(1-wave_speed*Time.deltaTime*0.1f));
-        Debug.Log(Time.deltaTime);
         gameObject.GetComponent<SpriteRenderer>().color = color;
     }
 
