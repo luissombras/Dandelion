@@ -3,16 +3,15 @@ using System.Collections;
 
 public class CameraMovement : MonoBehaviour {
 
-    public float cam_velocity;
+	[SerializeField] private float speed;
 
 	// Use this for initialization
 	void Start () {
-	
+		
 	}
 	
 	// Update is called once per frame
-	void Update () {
-        //GameObject camera = GameObject.FindGameObjectWithTag("MainCamera");
-        //camera.transform.
+	void LateUpdate () {		
+		transform.Translate (Vector2.down * Time.deltaTime * speed);
 	}
 }

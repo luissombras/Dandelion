@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: b799886eed81443c39d589fcd0b42115
+timeCreated: 1485018499
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: DK Prince Frog
+  fontNames:
+  - DK Prince Frog
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

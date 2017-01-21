@@ -24,7 +24,7 @@ public class WaveEffectController : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D coll)
     {
-        Debug.Log("Started Colision");
+        Debug.Log("Wave. Started Colision");
         //colision point
         Vector3 coliding_obj_pos = coll.gameObject.transform.position;
         Vector2 radial = new Vector2(coliding_obj_pos.x - mouse_pos.x, coliding_obj_pos.y - mouse_pos.y);

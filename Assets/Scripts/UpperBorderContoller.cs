@@ -17,4 +17,11 @@ public class UpperBorderContoller : MonoBehaviour {
     {
         transform.position = Camera.main.transform.position + upper_screen_pos;
     }
+
+	void OnTriggerEnter2D(Collider2D other) {
+		if (other.tag == "Player") {
+			Debug.Log ("Frog Died!!");
+			//Destroy (other.gameObject);
+		}
+	}
 }
