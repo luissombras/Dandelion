@@ -18,8 +18,13 @@ public class WaveEffectController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        
-        transform.localScale = new Vector3(transform.localScale.x + wave_speed, transform.localScale.y + wave_speed, 1f);
+        transform.localScale = new Vector3(transform.localScale.x + wave_speed * Time.deltaTime, transform.localScale.y + wave_speed * Time.deltaTime, 1f);
+        Color color = new Color(gameObject.GetComponent<SpriteRenderer>().color.r,
+                                gameObject.GetComponent<SpriteRenderer>().color.g,
+                                gameObject.GetComponent<SpriteRenderer>().color.b,
+                                gameObject.GetComponent<SpriteRenderer>().color.a*(1-wave_speed*Time.deltaTime*0.1f));
+        Debug.Log(Time.deltaTime);
+        gameObject.GetComponent<SpriteRenderer>().color = color;
     }
 
     void OnTriggerEnter2D(Collider2D coll)
@@ -30,21 +35,11 @@ public class WaveEffectController : MonoBehaviour {
         Vector2 radial = new Vector2(coliding_obj_pos.x - mouse_pos.x, coliding_obj_pos.y - mouse_pos.y);
         float magnitude = Vector3.Magnitude(radial);
 
-        Debug.Log(magnitude);
+        //Debug.Log("wave magnitude " + magnitude);
         //for direction
         radial.Normalize();
         //magnitude balance
         magnitude = Mathf.Clamp(wave_power/Mathf.Pow(magnitude, 2),0f, max_wave_power);
         coll.gameObject.GetComponent<Rigidbody2D>().AddForce(magnitude*radial, ForceMode2D.Impulse);
-    }
-
-    void OnCollisionStay2D(Collision2D coll)
-    {
-        Debug.Log("Stay Colison");
-    }
-
-    void OnCollisionExit2D(Collision2D coll)
-    {
-        Debug.Log("Ended Colison");
     }
 }
