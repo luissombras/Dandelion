@@ -5,7 +5,11 @@ using UnityEngine;
 public class FrogController : MonoBehaviour {
 
 	[SerializeField] float speed;
+<<<<<<< HEAD
     static float speed_up = 1f;
+=======
+	[SerializeField] AudioClip[] obstacleClips;
+>>>>>>> 9bf599d6d0cd11aaa9f5b30f262bceda4653781d
 
     private Rigidbody2D rb;
 
@@ -22,8 +26,18 @@ public class FrogController : MonoBehaviour {
         rb.AddForce(new Vector2(0f, -0.1f*speed_up), ForceMode2D.Force);
 	}
 
+<<<<<<< HEAD
     public static void frogSpeedUp(float increase)
     {
         speed_up = speed_up + increase;
     }
+=======
+	//void OnTriggerEnter2D(Collider2D other) {
+	void OnCollisionEnter2D(Collision2D coll) {
+		if (coll.gameObject.tag.Equals ("Obstacle") || coll.gameObject.tag.Equals ("swirl_movable")) {
+			AudioManager.Instance.PlayOneShoot2D (obstacleClips [Random.Range (0, obstacleClips.Length - 1)]);
+		}
+			
+	}
+>>>>>>> 9bf599d6d0cd11aaa9f5b30f262bceda4653781d
 }

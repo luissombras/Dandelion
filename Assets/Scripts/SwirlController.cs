@@ -13,6 +13,8 @@ public class SwirlController : MonoBehaviour {
     public float cntr_force;
     public float perp_force;
 
+	[SerializeField] AudioClip effectClip;
+
 	// NOTIFIER
 	private Notifier notifier;
 
@@ -63,6 +65,10 @@ public class SwirlController : MonoBehaviour {
             
             //Debug.Log(perpendicular);
             player_rb.AddForce(perp_force * perpendicular, ForceMode2D.Force);
+
+			// AUDIO
+			AudioManager.Instance.PlayOneShoot2D (effectClip);
+
         }
         
     }

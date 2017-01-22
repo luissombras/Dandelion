@@ -9,11 +9,16 @@ public class WaveEffectController : MonoBehaviour {
     public float max_wave_power;
     private Vector3 mouse_pos;
 
+	[SerializeField] private AudioClip[] effectClips;
+	[SerializeField] private float effectVolume;
+
     // Use this for initialization
     void Start () {
         //mouse position on creation
         mouse_pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         mouse_pos.Set(mouse_pos.x, mouse_pos.y, 0f);
+		// AUDIO
+		AudioManager.Instance.PlayOneShoot2D (effectClips [Random.Range (0, effectClips.Length - 1)], effectVolume);
     }
 	
 	// Update is called once per frame
