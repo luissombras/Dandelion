@@ -42,6 +42,22 @@ public class ScreensController : MonoBehaviour {
 		deathPanel.transform.SetAsLastSibling ();
 	}
 
+	public void RetryAction () {
+		GameManager.Instance.RestartCurrentScene ();
+	}
+
+	public void QuitAction () {
+		GameManager.Instance.QuitApplication ();
+	}
+
+	public void PauseAction () {
+		GameManager.Instance.OnPause ();
+	}
+
+	public void ResumeAction () {
+		GameManager.Instance.OnPause ();
+	}
+
 	// NOTIFIER
 	void OnDestroy () {
 		if (notifier != null) {

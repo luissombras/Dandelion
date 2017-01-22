@@ -5,10 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : Singleton<GameManager> {
 
-	[SerializeField] private GameObject wavesInput;
 	[SerializeField] private AudioClip[] sceneLoops;
 
 	private bool paused = false;
+	private int lastSceneIndex;
+
 	// NOTIFIER
 	private Notifier notifier;
 
@@ -40,7 +41,6 @@ public class GameManager : Singleton<GameManager> {
 	void Start () {
 		// NOTIFIER
 		notifier = new Notifier ();
-		//StartAudioLoop ();
 	}
 
 	void OnEnable() {
@@ -52,11 +52,13 @@ public class GameManager : Singleton<GameManager> {
 	}
 
 	private void OnSceneLoaded(Scene scene, LoadSceneMode mode) {
-		//do stuff
-		Debug.Log("Level Loaded");
-		Debug.Log(scene.name);
-		Debug.Log(mode);
+		Debug.Log("Level Loaded: "+scene.name);
+		Debug.Log ("Current scene: " + scene.buildIndex);
+		Debug.Log ("Last scene: " + lastSceneIndex);
+
+		StopAudioLoop (lastSceneIndex);
 		StartAudioLoop (scene.buildIndex);
+		lastSceneIndex = scene.buildIndex;
 	}
 
 	private void StartAudioLoop (int sceneIndex) {
@@ -64,13 +66,16 @@ public class GameManager : Singleton<GameManager> {
 		AudioManager.Instance.PlayLoop2D ("Scene_"+sceneIndex.ToString(), sceneLoops [sceneIndex]);
 	}
 
+	private void StopAudioLoop (int sceneIndex) {
+		//int scene = SceneManager.GetActiveScene ().buildIndex;
+		AudioManager.Instance.StopLoop ("Scene_"+sceneIndex.ToString());
+	}
+
 	public void OnPause () {
 		if (paused) {
 			notifier.Notify (ScreensController.ON_RESUME);
-			wavesInput.SetActive (true);
 		} else {
 			notifier.Notify (ScreensController.ON_PAUSE);
-			wavesInput.SetActive (false);
 		}
 		paused = !paused;
 	}
