@@ -45,7 +45,7 @@ public class ScreensController : MonoBehaviour {
 		deathPanel.transform.SetAsLastSibling ();
 	}
 
-<<<<<<< HEAD
+
     private void HandlePlayerWin(params object[] args)
     {
         Time.timeScale = 0;
@@ -53,9 +53,6 @@ public class ScreensController : MonoBehaviour {
         WinPanel.transform.SetAsLastSibling();
     }
 
-    // NOTIFIER
-    void OnDestroy () {
-=======
 	public void RetryAction () {
 		GameManager.Instance.RestartCurrentScene ();
 	}
@@ -74,7 +71,6 @@ public class ScreensController : MonoBehaviour {
 
 	// NOTIFIER
 	void OnDestroy () {
->>>>>>> 9bf599d6d0cd11aaa9f5b30f262bceda4653781d
 		if (notifier != null) {
 			notifier.UnsubcribeAll ();
 		}
