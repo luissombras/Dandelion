@@ -5,9 +5,11 @@ using UnityEngine;
 public class FlyController : MonoBehaviour {
 
     //public Animation animation;
-
-	// Use this for initialization
-	void Start () {
+    [SerializeField]
+    private AudioClip effectClip;
+    
+    // Use this for initialization
+    void Start () {
 		
 	}
 	
@@ -27,6 +29,8 @@ public class FlyController : MonoBehaviour {
             ScoreController.ScoreAdd();
             //score_text.GetComponent<ScoreController>().ScoreAdd();
             Invoke("enterTheVoid", 0.5f);
+            AudioManager.Instance.PlayOneShoot2D(effectClip);
+
 
         }
     }
