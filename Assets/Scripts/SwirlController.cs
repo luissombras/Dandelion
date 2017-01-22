@@ -30,7 +30,7 @@ public class SwirlController : MonoBehaviour {
 
     void OnTriggerStay2D(Collider2D coll)
     {
-        if (coll.gameObject.tag.Equals("Player"))
+        if (coll.gameObject.tag.Equals("Player") || coll.gameObject.tag.Equals("swirl_movable"))
         {
             player_rb = coll.gameObject.GetComponent<Rigidbody2D>();
             frog_pos = new Vector2(coll.gameObject.transform.position.x, coll.gameObject.transform.position.y);
