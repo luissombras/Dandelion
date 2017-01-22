@@ -10,10 +10,12 @@ public class ScreensController : MonoBehaviour {
 	public static string ON_PLAYER_DEAD = "OnPlayerDead";
 	public static string ON_PAUSE = "OnPause";
 	public static string ON_RESUME = "OnResume";
+    public static string ON_WIN = "OnWin";
 
-	[SerializeField] private GameObject gamePanel;
+    [SerializeField] private GameObject gamePanel;
 	[SerializeField] private GameObject pausePanel;
 	[SerializeField] private GameObject deathPanel;
+    [SerializeField] private GameObject WinPanel;
 
 	// Use this for initialization
 	void Start () {
@@ -22,7 +24,8 @@ public class ScreensController : MonoBehaviour {
 		notifier.Subscribe(ON_PAUSE, HandlePause);
 		notifier.Subscribe(ON_RESUME, HandleResume);	
 		notifier.Subscribe(ON_PLAYER_DEAD, HandlePlayerDead);
-	}
+        notifier.Subscribe(ON_WIN, HandlePlayerWin);
+    }
 
 	private void HandlePause (params object[] args) {
 		Time.timeScale = 0;
@@ -42,8 +45,15 @@ public class ScreensController : MonoBehaviour {
 		deathPanel.transform.SetAsLastSibling ();
 	}
 
-	// NOTIFIER
-	void OnDestroy () {
+    private void HandlePlayerWin(params object[] args)
+    {
+        Time.timeScale = 0;
+        WinPanel.SetActive(true);
+        WinPanel.transform.SetAsLastSibling();
+    }
+
+    // NOTIFIER
+    void OnDestroy () {
 		if (notifier != null) {
 			notifier.UnsubcribeAll ();
 		}

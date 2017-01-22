@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class FlyController : MonoBehaviour {
 
+    //public Animation animation;
+
 	// Use this for initialization
 	void Start () {
 		
@@ -20,10 +22,19 @@ public class FlyController : MonoBehaviour {
         {
             Debug.Log("Frog Ate!!");
             //GameObject score_text = GameObject.FindObjectOfType<Score_Text>();
+            Animator animator = gameObject.GetComponent<Animator>();
+            animator.SetTrigger("Fly_death");
             ScoreController.ScoreAdd();
             //score_text.GetComponent<ScoreController>().ScoreAdd();
-            Destroy(gameObject);
+            Invoke("enterTheVoid", 0.5f);
+
         }
+    }
+
+    void enterTheVoid()
+    {
+        Debug.Log("FLY DEATH");
+        Destroy(gameObject);
     }
 
 }

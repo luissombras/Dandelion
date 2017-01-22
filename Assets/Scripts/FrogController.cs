@@ -5,8 +5,9 @@ using UnityEngine;
 public class FrogController : MonoBehaviour {
 
 	[SerializeField] float speed;
+    static float speed_up = 1f;
 
-	private Rigidbody2D rb;
+    private Rigidbody2D rb;
 
 	// Use this for initialization
 	void Start () {
@@ -18,7 +19,11 @@ public class FrogController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         //small force pushing it down
-        rb.AddForce(new Vector2(0f, -0.1f), ForceMode2D.Force);
-		
+        rb.AddForce(new Vector2(0f, -0.1f*speed_up), ForceMode2D.Force);
 	}
+
+    public static void frogSpeedUp(float increase)
+    {
+        speed_up = speed_up + increase;
+    }
 }

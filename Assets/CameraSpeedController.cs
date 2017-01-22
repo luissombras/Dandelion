@@ -19,7 +19,8 @@ public class CameraSpeedController : MonoBehaviour {
         if (other.tag == "Player")
         {
             Debug.Log("Speed Up!");
-            CameraMovement.speedUpCamera(1);
+            CameraMovement.speedUpCamera(0.4f);
+            FrogController.frogSpeedUp(0.4f);
         }
     }
 }

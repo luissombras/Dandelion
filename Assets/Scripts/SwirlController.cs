@@ -43,7 +43,10 @@ public class SwirlController : MonoBehaviour {
             //Debug.Log(magnitude);
             if(magnitude < 0.5)
             {
-                Invoke("enterTheVoid", 1);
+                if (coll.gameObject.tag.Equals("Player"))
+                {
+                    Invoke("enterTheVoid", 1);
+                }
             }
             player_rb.AddForce(cntr_force * radial / Mathf.Pow(magnitude,1.5f), ForceMode2D.Force);
 
