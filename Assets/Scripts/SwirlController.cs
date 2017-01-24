@@ -30,6 +30,12 @@ public class SwirlController : MonoBehaviour {
         transform.Rotate(Vector3.forward * Time.deltaTime* swirl_velocity);
 	}
 
+    void OnTriggerEnter2D(Collider2D coll)
+    {
+        // AUDIO
+        AudioManager.Instance.PlayOneShoot2D(effectClip);
+    }
+
     void OnTriggerStay2D(Collider2D coll)
     {
         if (coll.gameObject.tag.Equals("Player") || coll.gameObject.tag.Equals("swirl_movable"))
@@ -65,9 +71,6 @@ public class SwirlController : MonoBehaviour {
             
             //Debug.Log(perpendicular);
             player_rb.AddForce(perp_force * perpendicular, ForceMode2D.Force);
-
-			// AUDIO
-			AudioManager.Instance.PlayOneShoot2D (effectClip);
 
         }
         

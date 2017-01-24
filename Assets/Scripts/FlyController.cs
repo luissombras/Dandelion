@@ -7,11 +7,11 @@ public class FlyController : MonoBehaviour {
     //public Animation animation;
     [SerializeField]
     private AudioClip effectClip;
+    public int score;
     
     // Use this for initialization
     void Start () {
-		
-	}
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -22,11 +22,11 @@ public class FlyController : MonoBehaviour {
     {
         if (other.tag == "Player")
         {
-            Debug.Log("Frog Ate!!");
+            //Debug.Log("Frog Ate!!");
             //GameObject score_text = GameObject.FindObjectOfType<Score_Text>();
             Animator animator = gameObject.GetComponent<Animator>();
             animator.SetTrigger("Fly_death");
-            ScoreController.ScoreAdd();
+            ScoreController.ScoreAdd(score);
             //score_text.GetComponent<ScoreController>().ScoreAdd();
             Invoke("enterTheVoid", 0.5f);
             AudioManager.Instance.PlayOneShoot2D(effectClip);
@@ -37,7 +37,7 @@ public class FlyController : MonoBehaviour {
 
     void enterTheVoid()
     {
-        Debug.Log("FLY DEATH");
+        //Debug.Log("FLY DEATH");
         Destroy(gameObject);
     }
 

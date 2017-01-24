@@ -19,8 +19,9 @@ public class ScoreController : MonoBehaviour {
         text_score.text = score.ToString();
     }
 
-    public static void ScoreAdd()
+    public static void ScoreAdd( int score_add)
     {
-        score = score + 1;
+        score = score + score_add;
+        Debug.Log(score);
     }
 }

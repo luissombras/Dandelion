@@ -1,9 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace UnityStandardAssets._2D
-{
-    public class Camera2DFollow : MonoBehaviour
+    public class Camera2DFollowY : MonoBehaviour
     {
         public Transform target;
         public float damping = 1;
@@ -15,6 +13,7 @@ namespace UnityStandardAssets._2D
         private Vector3 m_LastTargetPosition;
         private Vector3 m_CurrentVelocity;
         private Vector3 m_LookAheadPos;
+        static bool isActive = true;
 
         // Use this for initialization
         private void Start()
@@ -28,14 +27,16 @@ namespace UnityStandardAssets._2D
         // Update is called once per frame
         private void Update()
         {
+            if (isActive)
+            {   
             // only update lookahead pos if accelerating or changed direction
-            float xMoveDelta = (target.position - m_LastTargetPosition).x;
+            float yMoveDelta = (target.position - m_LastTargetPosition).y;
 
-            bool updateLookAheadTarget = Mathf.Abs(xMoveDelta) > lookAheadMoveThreshold;
+            bool updateLookAheadTarget = Mathf.Abs(yMoveDelta) > lookAheadMoveThreshold;
 
             if (updateLookAheadTarget)
             {
-                m_LookAheadPos = lookAheadFactor*Vector3.right*Mathf.Sign(xMoveDelta);
+                m_LookAheadPos = lookAheadFactor*Vector3.up*Mathf.Sign(yMoveDelta);
             }
             else
             {
@@ -45,9 +46,16 @@ namespace UnityStandardAssets._2D
             Vector3 aheadTargetPos = target.position + m_LookAheadPos + Vector3.forward*m_OffsetZ;
             Vector3 newPos = Vector3.SmoothDamp(transform.position, aheadTargetPos, ref m_CurrentVelocity, damping);
 
-            transform.position = newPos;
-
+            if(newPos.y <= 1.3f)
+            {
+                transform.position = new Vector3(transform.position.x, newPos.y, transform.position.z); // ONLY MOVES IN Y
+            }
             m_LastTargetPosition = target.position;
+            }
+        }
+
+        static public void disable()
+        {
+            isActive = false;
         }
     }
-}
