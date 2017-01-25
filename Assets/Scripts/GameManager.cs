@@ -83,6 +83,7 @@ public class GameManager : Singleton<GameManager> {
 	public void RestartCurrentScene () {
 		Time.timeScale = 1;
 		int scene = SceneManager.GetActiveScene ().buildIndex;
+        ScoreController.ScoreReset();
 		SceneManager.LoadScene (scene, LoadSceneMode.Single);
 	}
 

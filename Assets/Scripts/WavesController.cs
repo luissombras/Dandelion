@@ -37,11 +37,16 @@ public class WavesController : MonoBehaviour {
 			//wave creation
 			if (timehaspassed) {
 				timepassed = 0f;
-				if (Input.GetMouseButton (0)) {
+				if (Input.GetMouseButton (0) || Input.touchCount > 0) {
 					timehaspassed = false;
 					timepassed += Time.deltaTime;
-					//Instaciate wave at mouse click
-					Vector3 mouse_pos = Camera.main.ScreenToWorldPoint (Input.mousePosition);
+                    //Instaciate wave at mouse click
+                    Vector3 mouse_pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                    // IF touch controlls, it instaciates at touch position
+                    if (Input.touchCount > 0)
+                    {
+                        mouse_pos = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);
+                    }
 					mouse_pos.Set (mouse_pos.x, mouse_pos.y, 0f);
 					//Debug.Log(mouse_pos.x + " " + mouse_pos.y);
 					GameObject wave = Instantiate (wave_effect, mouse_pos, Quaternion.identity) as GameObject;
