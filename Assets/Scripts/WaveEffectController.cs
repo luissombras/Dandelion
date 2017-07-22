@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WaveEffectController : MonoBehaviour {
+public class WaveEffectController : MonoBehaviour 
+{
 
     public float wave_speed;
     public float wave_power;
@@ -12,8 +13,8 @@ public class WaveEffectController : MonoBehaviour {
 	[SerializeField] private AudioClip[] effectClips;
 	[SerializeField] private float effectVolume;
 
-    // Use this for initialization
-    void Start () {
+    void Start () 
+    {
         //mouse position on creation
         mouse_pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         mouse_pos.Set(mouse_pos.x, mouse_pos.y, 0f);
@@ -21,8 +22,8 @@ public class WaveEffectController : MonoBehaviour {
 		AudioManager.Instance.PlayOneShoot2D (effectClips [Random.Range (0, effectClips.Length - 1)], effectVolume);
     }
 	
-	// Update is called once per frame
-	void Update () {
+	void Update () 
+    {
         transform.localScale = new Vector3(transform.localScale.x + wave_speed * Time.deltaTime, transform.localScale.y + wave_speed * Time.deltaTime, 1f);
         Color color = new Color(gameObject.GetComponent<SpriteRenderer>().color.r,
                                 gameObject.GetComponent<SpriteRenderer>().color.g,

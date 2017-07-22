@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PanelController : MonoBehaviour {
+public class PanelController : MonoBehaviour 
+{
 
 	[SerializeField] private bool startVisible = false;
 
-	// Use this for initialization
-	void Awake () {
+	void Awake () 
+    {
 		gameObject.SetActive (startVisible);
 	}
 }

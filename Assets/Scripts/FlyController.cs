@@ -2,21 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FlyController : MonoBehaviour {
-
-    //public Animation animation;
-    [SerializeField]
-    private AudioClip effectClip;
+public class FlyController : MonoBehaviour 
+{
+    [SerializeField] private AudioClip effectClip;
     public int score;
-    
-    // Use this for initialization
-    void Start () {
-    }
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 
     void OnTriggerEnter2D(Collider2D other)
     {

@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SwirlController : MonoBehaviour {
-
+public class SwirlController : MonoBehaviour 
+{
     private Rigidbody2D player_rb;
     private Vector2 swirl_pos;
     private Vector2 frog_pos;
@@ -18,14 +18,14 @@ public class SwirlController : MonoBehaviour {
 	// NOTIFIER
 	private Notifier notifier;
 
-    // Use this for initialization
-    void Start () {
+    void Start () 
+    {
 		// NOTIFIER
 		notifier = new Notifier();
 	}
 	
-	// Update is called once per frame
-	void Update () {
+	void Update () 
+    {
         //rotate swirl image
         transform.Rotate(Vector3.forward * Time.deltaTime* swirl_velocity);
 	}
@@ -53,7 +53,7 @@ public class SwirlController : MonoBehaviour {
             {
                 if (coll.gameObject.tag.Equals("Player"))
                 {
-                    Invoke("enterTheVoid", 1);
+                    Invoke("EnterTheVoid", 1);
                 }
             }
             player_rb.AddForce(cntr_force * radial / Mathf.Pow(magnitude,1.5f), ForceMode2D.Force);
@@ -76,16 +76,18 @@ public class SwirlController : MonoBehaviour {
         
     }
 
-    void enterTheVoid()
+    void EnterTheVoid()
     {
         Debug.Log("DEATH");
-		notifier.Notify (ScreensController.ON_PLAYER_DEAD);
+		notifier.Notify (GameController.ON_PLAYER_DEAD);
     }
 
 	// NOTIFIER
-	void OnDestroy () {
-		if (notifier != null) {
-			notifier.UnsubcribeAll ();
+	void OnDestroy () 
+    {
+		if (notifier != null) 
+        {
+			notifier.UnsubcribeAll();
 		}
 	}
 }

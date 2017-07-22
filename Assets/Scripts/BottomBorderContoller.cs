@@ -2,14 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BottomBorderContoller : MonoBehaviour {
+public class BottomBorderContoller : MonoBehaviour 
+{
 
     public float border_place;//1 - Left, 2 - Bottom, 3 Right
 
     private Vector3 screen_pos;
 
-    // Use this for initialization
-    void Start () {
+    void Start () 
+    {
         float cam_height = 2f * Camera.main.orthographicSize;
         float cam_width = cam_height * Camera.main.aspect;
         //adtapts if left and right camera limits are smaller than play space
@@ -25,8 +26,8 @@ public class BottomBorderContoller : MonoBehaviour {
         }
     }
 	
-	// Update is called once per frame
-	void Update () {
+	void Update () 
+    {
         transform.position = Camera.main.transform.position + screen_pos;
 	}
 }

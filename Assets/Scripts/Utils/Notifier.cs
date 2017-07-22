@@ -6,7 +6,8 @@ public class Notifier
 {
 	Dictionary<string, NotificationCenter.NotifyDelegate> subscriptions;
 
-	public Notifier() {
+	public Notifier() 
+    {
 		subscriptions = new Dictionary<string, NotificationCenter.NotifyDelegate>();
 	}
 
@@ -15,11 +16,13 @@ public class Notifier
 		UnsubcribeAll();
 	}
 
-	public void Notify(string name, params object[] args) {
+	public void Notify(string name, params object[] args) 
+    {
 		NotificationCenter.Instance.Notify(name,args);
 	}
 
-	public void Subscribe(string name, NotificationCenter.NotifyDelegate slot){
+	public void Subscribe(string name, NotificationCenter.NotifyDelegate slot)
+    {
 		subscriptions.Add(name,slot);
 		NotificationCenter.Instance.Subscribe( name, slot );
 	}

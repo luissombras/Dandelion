@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UpperBorderContoller : MonoBehaviour {
+public class UpperBorderContoller : MonoBehaviour 
+{
 
     private Vector3 upper_screen_pos;
 
@@ -23,10 +24,12 @@ public class UpperBorderContoller : MonoBehaviour {
         transform.position = Camera.main.transform.position + upper_screen_pos;
     }
 
-	void OnTriggerEnter2D(Collider2D other) {
-		if (other.tag == "Player") {
+	void OnTriggerEnter2D(Collider2D other) 
+    {
+		if (other.tag == "Player") 
+        {
 			Debug.Log ("Frog Died!!");
-			notifier.Notify (ScreensController.ON_PLAYER_DEAD);
+			notifier.Notify (GameController.ON_PLAYER_DEAD);
 			Destroy (other.gameObject);
 		}
 	}

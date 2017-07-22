@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class WavesController : MonoBehaviour {
-
+public class WavesController : MonoBehaviour 
+{
     public GameObject wave_effect;
     private bool timehaspassed = true;
     private float timepassed = 0f;
@@ -12,32 +12,36 @@ public class WavesController : MonoBehaviour {
 	// NOTIFIER
 	private Notifier notifier;
 
-    // Use this for initialization
-    void Start () {
+    void Start () 
+    {
 		// NOTIFIER
 		notifier = new Notifier ();
-		notifier.Subscribe(ScreensController.ON_PAUSE, HandleInactive);
-		notifier.Subscribe(ScreensController.ON_RESUME, HandleActive);	
-		notifier.Subscribe(ScreensController.ON_PLAYER_DEAD, HandleInactive);
-
+		notifier.Subscribe(GameController.ON_PAUSE, HandleInactive);
+		notifier.Subscribe(GameController.ON_RESUME, HandleActive);	
+		notifier.Subscribe(GameController.ON_PLAYER_DEAD, HandleInactive);
 		active = true;
 	}
 
-	private void HandleActive (params object[] args) {
+	private void HandleActive (params object[] args) 
+    {
 		active = true;
 	}
 
-	private void HandleInactive (params object[] args) {
+	private void HandleInactive (params object[] args) 
+    {
 		active = false;
 	}
 	
-	// Update is called once per frame
-	void Update () {
-		if (active) {
+	void Update () 
+    {
+		if (active) 
+        {
 			//wave creation
-			if (timehaspassed) {
+			if (timehaspassed) 
+            {
 				timepassed = 0f;
-				if (Input.GetMouseButton (0) || Input.touchCount > 0) {
+				if (Input.GetMouseButton (0) || Input.touchCount > 0) 
+                {
 					timehaspassed = false;
 					timepassed += Time.deltaTime;
                     //Instaciate wave at mouse click
@@ -57,9 +61,11 @@ public class WavesController : MonoBehaviour {
 					float delay = 5; //seconds
 					Destroy (wave, delay);
 				}
-			} else {
+			} else 
+            {
 				timepassed += Time.deltaTime;
-				if (timepassed > time_between_waves) {
+				if (timepassed > time_between_waves) 
+                {
 					timehaspassed = true;
 				}
 			}
@@ -67,7 +73,8 @@ public class WavesController : MonoBehaviour {
 	}
 
 	// NOTIFIER
-	void OnDestroy () {
+	void OnDestroy () 
+    {
 		if (notifier != null) {
 			notifier.UnsubcribeAll ();
 		}
