@@ -101,13 +101,11 @@ public class AppManager : Singleton<AppManager>
 
 	private void StartAudioLoop(int sceneIndex)
 	{
-		//int scene = SceneManager.GetActiveScene ().buildIndex;
 		AudioManager.Instance.PlayLoop2D("Scene_" + sceneIndex.ToString(), sceneLoops[sceneIndex]);
 	}
 
 	private void StopAudioLoop(int sceneIndex)
 	{
-		//int scene = SceneManager.GetActiveScene ().buildIndex;
 		AudioManager.Instance.StopLoop("Scene_" + sceneIndex.ToString());
 	}
 

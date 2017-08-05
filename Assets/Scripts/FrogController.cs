@@ -6,8 +6,8 @@ public class FrogController : MonoBehaviour
 {
 
 	[SerializeField] float speed;
-    static float speed_up = 1f;
-	[SerializeField] AudioClip[] obstacleClips;
+    [SerializeField] AudioClip[] obstacleClips;
+    static float speed_up = 1.0f;
 
     private Rigidbody2D rb;
 
@@ -25,7 +25,7 @@ public class FrogController : MonoBehaviour
 	}
 
 
-    public static void frogSpeedUp(float increase)
+    public static void FrogSpeedUp(float increase)
     {
         speed_up = speed_up + increase;
     }

@@ -8,10 +8,11 @@ public class WaveEffectController : MonoBehaviour
     public float wave_speed;
     public float wave_power;
     public float max_wave_power;
-    private Vector3 mouse_pos;
 
 	[SerializeField] private AudioClip[] effectClips;
 	[SerializeField] private float effectVolume;
+
+	private Vector3 mouse_pos;
 
     void Start () 
     {

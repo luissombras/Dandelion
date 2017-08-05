@@ -1111,7 +1111,7 @@ GameObject:
   - component: {fileID: 1135920945}
   - component: {fileID: 1135920944}
   m_Layer: 0
-  m_Name: GameManager
+  m_Name: AppManager
   m_TagString: GameController
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1133,7 +1133,6 @@ MonoBehaviour:
   sceneLoops:
   - {fileID: 8300000, guid: ed3f434de1d054341a9ea9bd77a349c1, type: 3}
   - {fileID: 8300000, guid: 30952e3a133af4e1e8132aadb18d1243, type: 3}
-  - {fileID: 8300000, guid: bb2184ab6629e4d53a19bf4960de1844, type: 3}
   iAmFirst: 1
 --- !u!4 &1135920945
 Transform:

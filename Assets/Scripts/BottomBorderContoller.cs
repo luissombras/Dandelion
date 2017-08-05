@@ -5,7 +5,7 @@ using UnityEngine;
 public class BottomBorderContoller : MonoBehaviour 
 {
 
-    public float border_place;//1 - Left, 2 - Bottom, 3 Right
+    public int border_place;//1 - Left, 2 - Bottom, 3 Right
 
     private Vector3 screen_pos;
 

@@ -16,7 +16,7 @@ public class Camera2DFollowY : MonoBehaviour
     private Vector3 m_LastTargetPosition;
     private Vector3 m_CurrentVelocity;
     private Vector3 m_LookAheadPos;
-    static bool isActive = true;
+    static public bool isActive = false;
 
     // Use this for initialization
     private void Start()
@@ -68,7 +68,7 @@ public class Camera2DFollowY : MonoBehaviour
         }
     }
 
-    static public void disable()
+    static public void Disable()
     {
         isActive = false;
     }

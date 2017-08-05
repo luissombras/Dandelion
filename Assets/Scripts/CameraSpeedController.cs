@@ -4,15 +4,23 @@ using UnityEngine;
 
 public class CameraSpeedController : MonoBehaviour 
 {
+    [SerializeField] bool isStart = false; 
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag == "Player")
+        if (isStart)
         {
-            Debug.Log("Speed Up!");
-            Camera2DFollowY.disable();
-            CameraMovement.speedUpCamera(0.7f);
-            FrogController.frogSpeedUp(0.4f);
-        }
+            CameraMovement.isActive = true;
+        } else 
+        {
+			if (other.tag == "Player")
+			{
+				Debug.Log("Speed Up!");
+				Camera2DFollowY.Disable();
+				CameraMovement.SpeedUpCamera(0.7f);
+				FrogController.FrogSpeedUp(0.4f);
+			}
+		}
     }
+
 }

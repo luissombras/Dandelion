@@ -4,27 +4,31 @@ using System.Collections;
 public class CameraMovement : MonoBehaviour 
 {
 
-	[SerializeField] private float speed;
-    private static float speed_update;
+    [SerializeField] private float speed = 1.0f;
+    private static float speedUpdate;
+    public static bool isActive = false;
 
     void Start () 
     {
-        speed_update = speed;
+        speedUpdate = speed;
     }
 	
 	void LateUpdate () 
-    {		
-		transform.Translate (Vector2.down * Time.deltaTime * speed_update);
+    {
+        if (isActive)
+        {
+            transform.Translate(Vector2.down * Time.deltaTime * speedUpdate);    
+        }
 	}
 
-    public static void speedUpCamera(float speed_increase)
+    public static void SpeedUpCamera(float speedIncrease)
     {
-        speed_update += speed_increase;
+        speedUpdate += speedIncrease;
     }
 
-    public static void speedDownCamera(float speed_increase)
+    public static void SpeedDownCamera(float speedIncrease)
     {
-        speed_update -= speed_increase;
+        speedUpdate -= speedIncrease;
     }
 
 
